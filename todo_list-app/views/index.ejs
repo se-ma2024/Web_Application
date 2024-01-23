@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <ul>
+        <% todos.forEach(todo => { %>
+        <li><%= todo %></li>
+        <% }); %>
+    </ul>
+    <form action = "/add" method = "post">
+        <label for = "newToDo">newToDo:</label>
+        <input type = "text" id = "newToDo" name = "newToDo" required>
+        <button type = "submit">Add ToDo</button>
+    </form>
+</body>
+</html>
