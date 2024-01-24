@@ -37,4 +37,4 @@ exports.postEditToDo = (req, res) => {
     };
     todoModel.editToDo(index, updatedTodo);
     res.redirect("/todos");
-}
+};
