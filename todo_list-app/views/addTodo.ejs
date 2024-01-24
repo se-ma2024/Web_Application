@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新しいToDoを追加</title>
+</head>
+<body>
+    <h1>新しいToDoを追加</h1>
+    <form action="/todos/add" method="post">
+        <label for="title">タイトル：</label>
+        <input type="text" id="title" name="title" required>
+        <label for="description">詳細：</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+        <label for="dueDate">期限日：</label>
+        <input type="date" id="dueDate" name="dueDate" required>
+        <button type="submit">ToDoを追加</button>
+    </form>
+    <a href="/todos">ToDoリストに戻る</a>
+</body>
+</html>
