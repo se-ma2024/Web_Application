@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ToDoリスト</title>
 </head>
 <body>
-    <h1>ToDo List</h1>
+    <h1>ToDoリスト</h1>
     <ul>
-        <% todos.forEach(todo => { %>
-        <li><%= todo %></li>
+        <% todos.forEach((todo, index) => { %>
+            <li>
+                <%= todo.title %> - <%= todo.description %> (期限: <%= todo.dueDate %>)
+                <!-- 削除リンクを追加 -->
+                <a href="/todos/edit/<%= index %>">編集</a> |
+                <a href="/todos/delete/<%= index %>">削除</a>
+            </li>
         <% }); %>
     </ul>
-    <form action = "/add" method = "post">
-        <label for = "newToDo">newToDo:</label>
-        <input type = "text" id = "newToDo" name = "newToDo" required>
-        <button type = "submit">Add ToDo</button>
-    </form>
+    <a href="/todos/add">新しいToDoを追加</a>
 </body>
 </html>
