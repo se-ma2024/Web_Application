@@ -1,0 +1,26 @@
+<!-- views/completeToDos.ejs -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完了したToDoリスト</title>
+</head>
+<body>
+    <h1>完了したToDoリスト</h1>
+
+    <!-- 完了タスクのセクション -->
+    <h2>完了したToDo</h2>
+    <ul>
+        <% complete_todos.forEach((todo, index) => { %>
+            <li>
+                <%= todo.title %> - <%= todo.description %> (完了日: <%= todo.completedDate %>)
+                <a href="/todos/complete_todos/delete/<%= index %>">削除</a>
+            </li>
+        <% }); %>
+    </ul>
+
+    <a href="/todos">ToDoリストに戻る</a>
+</body>
+</html>

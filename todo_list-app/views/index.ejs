@@ -7,16 +7,22 @@
 </head>
 <body>
     <h1>ToDoリスト</h1>
+
+    <!-- 未完了タスクのセクション -->
+    <h2>未完了のToDo</h2>
     <ul>
         <% todos.forEach((todo, index) => { %>
-            <li>
-                <%= todo.title %> - <%= todo.description %> (期限: <%= todo.dueDate %>)
-                <!-- 削除リンクを追加 -->
-                <a href="/todos/edit/<%= index %>">編集</a> |
-                <a href="/todos/delete/<%= index %>">削除</a>
-            </li>
+            <% if (!todo.completed) { %>
+                <li>
+                    <%= todo.title %> - <%= todo.description %> (期限: <%= todo.dueDate %>)
+                    <a href="/todos/edit/<%= index %>">編集</a> |
+                    <a href="/todos/delete/<%= index %>">削除</a> |
+                    <a href="/todos/add_complete/<%= index %>">完了</a>
+                </li>
+            <% } %>
         <% }); %>
     </ul>
     <a href="/todos/add">新しいToDoを追加</a>
+    <a href="/todos/complete_todos">完了したタスクを確認</a>
 </body>
 </html>

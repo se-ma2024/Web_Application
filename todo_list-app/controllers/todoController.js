@@ -1,9 +1,16 @@
 const todoModel = require("../models/todoModel");
 
+// controllers/todoController.js
+
 exports.getToDos = (req, res) => {
     const getAllToDos = todoModel.getAllToDos();
     res.render("index", { todos: getAllToDos});
 };
+
+exports.getCompleteToDos = (req, res) => {
+    const getCompleteToDos = todoModel.getCompleteToDos();
+    res.render("completeTodo", { complete_todos: getCompleteToDos });
+}
 
 exports.getAddTodo = (req, res) => {
     res.render("addToDo");
@@ -22,6 +29,12 @@ exports.deleteToDo = (req, res) => {
     res.redirect("/todos");
 };
 
+exports.deleteCompleteToDo = (req, res) => {
+    const index = req.params.index;
+    todoModel.deleteCompleteToDo(index);
+    res.redirect("/todos/complete_todos");
+};
+
 exports.getEditToDo = (req, res) => {
     const index = req.params.index;
     const todoToEdit = todoModel.getAllToDos()[index];
@@ -36,5 +49,11 @@ exports.postEditToDo = (req, res) => {
         dueDate: req.body.dueDate,
     };
     todoModel.editToDo(index, updatedTodo);
+    res.redirect("/todos");
+};
+
+exports.add_completeToDo = (req, res) => {
+    const index = req.params.index;
+    todoModel.add_completeToDo(index);
     res.redirect("/todos");
 };
