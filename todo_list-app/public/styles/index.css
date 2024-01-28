@@ -1,0 +1,107 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    color: #495057;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    width: 100%;
+    z-index: 2;
+}
+
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-y: auto;
+}
+
+h1{
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.empty-state {
+    text-align: center;
+    color: #777;
+    margin-top: 50px;
+}
+
+.btn-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1001;
+}
+
+.add-btn, .view-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    color: #fff;
+}
+
+.add-btn {
+    background-color: #343a40;
+}
+
+.view-btn {
+    background-color: #28a745;
+}
+
+.btn-icon {
+    margin-right: 10px;
+}
+
+.add-btn:hover, .view-btn:hover {
+    filter: brightness(1.2);
+}

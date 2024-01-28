@@ -1,26 +1,38 @@
-<!-- views/completeToDos.ejs -->
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>完了したToDoリスト</title>
+    <title>Stylish Completed ToDo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/styles/completeTodo.css">
 </head>
 <body>
-    <h1>完了したToDoリスト</h1>
+    <header>
+        <h1>Stylish Completed ToDo List</h1>
+    </header>
 
-    <!-- 完了タスクのセクション -->
-    <h2>完了したToDo</h2>
-    <ul>
-        <% complete_todos.forEach((todo, index) => { %>
-            <li>
-                <%= todo.title %> - <%= todo.description %> (完了日: <%= todo.completedDate %>)
-                <a href="/todos/complete_todos/delete/<%= index %>">削除</a>
-            </li>
-        <% }); %>
-    </ul>
+    <main>
+        <!-- 完了タスクのセクション -->
+        <h2>完了したToDo</h2>
+        <% if (complete_todos.length > 0) { %>
+            <% complete_todos.forEach((todo, index) => { %>
+                <div class="card">
+                    <div class="card-content">
+                        <strong><%= todo.title %></strong> - <%= todo.description %> (完了日: <%= todo.completedDate %>)
+                    </div>
+                    <div class="card-actions">
+                        <a href="/todos/complete_todos/delete/<%= index %>"><i class="fas fa-trash-alt btn-icon"></i></a>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p class="empty-state">完了したToDoはありません。</p>
+        <% } %>
+    </main>
 
-    <a href="/todos">ToDoリストに戻る</a>
+    <div class="btn-container">
+        <button class="back-btn" onclick="location.href='/todos'"><i class="fas fa-arrow-left btn-icon"></i> ToDoリストに戻る</button>
+    </div>
 </body>
 </html>

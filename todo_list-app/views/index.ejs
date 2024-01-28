@@ -3,26 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDoリスト</title>
+    <title>Stylish ToDo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
-    <h1>ToDoリスト</h1>
+    <header>
+        <h1>Stylish ToDo</h1>
+    </header>
 
-    <!-- 未完了タスクのセクション -->
-    <h2>未完了のToDo</h2>
-    <ul>
-        <% todos.forEach((todo, index) => { %>
-            <% if (!todo.completed) { %>
-                <li>
-                    <%= todo.title %> - <%= todo.description %> (期限: <%= todo.dueDate %>)
-                    <a href="/todos/edit/<%= index %>">編集</a> |
-                    <a href="/todos/delete/<%= index %>">削除</a> |
-                    <a href="/todos/add_complete/<%= index %>">完了</a>
-                </li>
-            <% } %>
-        <% }); %>
-    </ul>
-    <a href="/todos/add">新しいToDoを追加</a>
-    <a href="/todos/complete_todos">完了したタスクを確認</a>
+    <main>
+        <!-- 未完了タスクのセクション -->
+        <h2>未完了のToDo</h2>
+        <% if (todos.length > 0) { %>
+            <% todos.forEach((todo, index) => { %>
+                <% if (!todo.completed) { %>
+                    <div class="card">
+                        <div class="card-content">
+                            <strong><%= todo.title %></strong> - <%= todo.description %> (期限: <%= todo.dueDate %>)
+                        </div>
+                        <div class="card-actions">
+                            <a href="/todos/edit/<%= index %>"><i class="fas fa-edit btn-icon"></i></a>
+                            <a href="/todos/delete/<%= index %>"><i class="fas fa-trash-alt btn-icon"></i></a>
+                            <a href="/todos/add_complete/<%= index %>"><i class="fas fa-check btn-icon"></i></a>
+                        </div>
+                    </div>
+                <% } %>
+            <% }); %>
+        <% } else { %>
+            <p class="empty-state">未完了のToDoはありません。</p>
+        <% } %>
+    </main>
+
+    <div class="btn-container">
+        <button class="add-btn" onclick="location.href='/todos/add'"><i class="fas fa-plus btn-icon"></i> ToDoを追加</button>
+        <button class="view-btn" onclick="location.href='/todos/complete_todos'"><i class="fas fa-list btn-icon"></i> 完了したタスクを確認</button>
+    </div>
 </body>
 </html>

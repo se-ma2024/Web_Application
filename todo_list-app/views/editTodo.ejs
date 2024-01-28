@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoを編集</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/styles/editTodo.css">
 </head>
 <body>
-    <h1>ToDoを編集</h1>
-    <form action="/todos/edit/<%= index %>" method="post">
-        <label for="title">タイトル：</label>
-        <input type="text" id="title" name="title" value="<%= todoToEdit.title %>" required>
-        <label for="description">詳細：</label>
-        <textarea id="description" name="description" rows="4" required><%= todoToEdit.description %></textarea>
-        <label for="dueDate">期限日：</label>
-        <input type="date" id="dueDate" name="dueDate" value="<%= todoToEdit.dueDate %>" required>
-        <button type="submit">更新</button>
-    </form>
-    <a href="/todos">ToDoリストに戻る</a>
+    <header>
+        <h1>ToDoを編集</h1>
+    </header>
+
+    <main>
+        <form action="/todos/edit/<%= index %>" method="post">
+            <label for="title">タイトル：</label>
+            <input type="text" id="title" name="title" value="<%= todoToEdit.title %>" required>
+            <label for="description">詳細：</label>
+            <textarea id="description" name="description" rows="4" required><%= todoToEdit.description %></textarea>
+            <label for="dueDate">期限日：</label>
+            <input type="date" id="dueDate" name="dueDate" value="<%= todoToEdit.dueDate %>" required>
+            <button type="submit">更新</button>
+        </form>
+        <a href="/todos">ToDoリストに戻る</a>
+    </main>
 </body>
 </html>
