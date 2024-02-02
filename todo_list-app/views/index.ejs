@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>Stylish ToDo</h1>
+        <h1>ToDo List</h1>
     </header>
 
     <main>
@@ -21,6 +21,12 @@
                     <div class="card">
                         <div class="card-content">
                             <strong><%= todo.title %></strong> - <%= todo.description %> (期限: <%= todo.dueDate %>)
+                            <% const dueDateObject = new Date(todo.dueDate); %>
+                            <% if (dueDateObject.getTime() > Date.now()) { %>
+                                <span class="remaining-days">(残り <%= Math.ceil((dueDateObject.getTime() - Date.now()) / (1000 * 60 * 60 * 24)) %> 日)</span>
+                            <% } else { %>
+                                <span class="expired">(期限切れ)</span>
+                            <% } %>
                         </div>
                         <div class="card-actions">
                             <a href="/todos/edit/<%= index %>"><i class="fas fa-edit btn-icon"></i></a>

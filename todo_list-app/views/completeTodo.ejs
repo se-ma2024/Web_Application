@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>Stylish Completed ToDo List</h1>
+        <h1>ToDo List</h1>
     </header>
 
     <main>
@@ -19,7 +19,7 @@
             <% complete_todos.forEach((todo, index) => { %>
                 <div class="card">
                     <div class="card-content">
-                        <strong><%= todo.title %></strong> - <%= todo.description %> (完了日: <%= todo.completedDate %>)
+                        <strong><%= todo.title %></strong> - <%= todo.description %> (完了日: <%= todo.completedDate.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-') %>)
                     </div>
                     <div class="card-actions">
                         <a href="/todos/complete_todos/delete/<%= index %>"><i class="fas fa-trash-alt btn-icon"></i></a>
